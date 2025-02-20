@@ -32,7 +32,7 @@
         }
         body.light-mode .fixed-container {
             background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),
-                        url('https://i.pinimg.com/736x/f4/9c/c3/f49cc3d702c6a3c29c39f1e849c8b2a9.jpg') no-repeat center center/cover;
+                        url('https://i.imgur.com/RZXOQ1E.jpeg') no-repeat center center/cover;
         }
         body.light-mode .text, body.light-mode .small-text {
             color: black;
@@ -47,7 +47,7 @@
             width: 100%;
             height: 100vh;
             background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-                        url('https://i.pinimg.com/736x/f4/9c/c3/f49cc3d702c6a3c29c39f1e849c8b2a9.jpg') no-repeat center center/cover;
+                        url('https://i.imgur.com/RZXOQ1E.jpeg') no-repeat center center/cover;
             z-index: -1;
         }
         .content {
@@ -65,6 +65,7 @@
             align-items: center;
             gap: 30px;
             flex-direction: column;
+            animation: float 4s ease-in-out infinite; /* More noticeable floating animation */
         }
         .text-container {
             text-align: center;
@@ -149,6 +150,14 @@
             to {
                 opacity: 1;
                 transform: translateY(0);
+            }
+        }
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0); /* Start and end at the same position */
+            }
+            50% {
+                transform: translateY(-20px); /* Move up more noticeably */
             }
         }
         .text, .small-text {
@@ -283,7 +292,7 @@
                 <div class="text">Fine Shyts</div>
                 <div class="small-text">Wanna be my fine shyt?</div>
             </div>
-            <img class="image" src="https://i.pinimg.com/736x/72/c9/38/72c9382e067fc1daa1c24d52df056f35.jpg" alt="Scrolling Image" loading="lazy">
+            <img class="image" src="https://i.imgur.com/gTtbqPi.jpeg" alt="Scrolling Image" loading="lazy">
         </div>
     </div>
 
