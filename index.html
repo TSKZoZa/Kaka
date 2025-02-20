@@ -102,6 +102,7 @@
             background-color: #111;
             width: 100%;
             padding: 20px 0;
+            padding-bottom: 80px; /* Add extra space at the bottom */
         }
         .footer {
             display: flex;
@@ -220,6 +221,25 @@
         body.light-mode .discord-button:hover i {
             color: #555; /* Change Discord icon hover color in light mode */
         }
+        /* Ensure the theme toggle button is always on top */
+        #theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #333;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 1000; /* Ensure it's above other elements */
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        /* Light mode styles for the theme toggle button */
+        body.light-mode #theme-toggle {
+            background: #f1f1f1;
+            color: black;
+        }
         @media (min-width: 768px) {
             .text {
                 font-size: 6rem;
@@ -290,7 +310,7 @@
     <button id="back-to-top" title="Go to top">↑</button>
 
     <!-- Dark/Light Mode Toggle -->
-    <button id="theme-toggle" style="position: fixed; top: 20px; right: 20px; background: #333; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer;">🌓</button>
+    <button id="theme-toggle">🌓</button>
 
     <!-- GSAP and ScrollTrigger -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
