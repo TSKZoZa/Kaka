@@ -4,6 +4,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A personal website for Otis, made with love.">
+    <meta property="og:title" content="Otis">
+    <meta property="og:description" content="A personal website for Otis, made with love.">
+    <meta property="og:image" content="https://example.com/og-image.jpg">
+    <meta property="og:url" content="https://example.com">
+    <meta name="twitter:card" content="summary_large_image">
     <title>Otis</title>
     <style>
         * {
@@ -11,11 +17,28 @@
             padding: 0;
             box-sizing: border-box;
         }
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             background-color: black;
             color: white;
             font-family: Arial, sans-serif;
             text-align: center;
+        }
+        body.light-mode {
+            background-color: white;
+            color: black;
+        }
+        body.light-mode .fixed-container {
+            background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),
+                        url('https://cdn.discordapp.com/attachments/1341426971372028014/1341429454572093501/f49cc3d702c6a3c29c39f1e849c8b2a9.jpg?ex=67b5f708&is=67b4a588&hm=561610350108aacfbece8906106923a8c29b952001e45d2049cce2ad61f91765&') no-repeat center center/cover;
+        }
+        body.light-mode .text, body.light-mode .small-text {
+            color: black;
+        }
+        body.light-mode .footer-wrapper {
+            background-color: #f1f1f1;
         }
         .fixed-container {
             position: fixed;
@@ -41,27 +64,27 @@
             display: flex;
             align-items: center;
             gap: 30px;
-            flex-direction: column; /* Stack vertically on small screens */
+            flex-direction: column;
         }
         .text-container {
-            text-align: center; /* Center text on small screens */
-            white-space: normal; /* Allow text to wrap */
+            text-align: center;
+            white-space: normal;
         }
         .text {
-            font-size: 3rem; /* Smaller font size for phones */
+            font-size: 3rem;
             font-weight: bold;
             color: white;
             font-family: "Poppins", sans-serif;
             margin-bottom: 10px;
         }
         .small-text {
-            font-size: 1.5rem; /* Smaller font size for phones */
+            font-size: 1.5rem;
             color: #ccc;
             font-family: "Poppins", sans-serif;
         }
         .image {
-            width: 100%; /* Make image responsive */
-            max-width: 300px; /* Limit maximum width */
+            width: 100%;
+            max-width: 300px;
             height: auto;
             border-radius: 15px;
             animation: fadeInUp 1.5s ease-out forwards;
@@ -71,7 +94,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            font-size: 2rem; /* Smaller font size for phones */
+            font-size: 2rem;
             font-weight: bold;
             width: 100%;
         }
@@ -82,15 +105,15 @@
         }
         .footer {
             display: flex;
-            flex-direction: column; /* Stack footer sections vertically on small screens */
+            flex-direction: column;
             align-items: center;
-            gap: 20px; /* Add spacing between sections */
-            width: 90%; /* Make footer narrower on small screens */
+            gap: 20px;
+            width: 90%;
             margin: 0 auto;
         }
         .footer-section {
             animation: fadeInUp 1.5s ease-out forwards;
-            text-align: center; /* Center text in footer */
+            text-align: center;
         }
         .footer-section h2, .footer-section p {
             margin: 5px 0;
@@ -106,8 +129,8 @@
             transform: scale(1.1);
         }
         .discord-button i {
-            color: white; /* Ensures the Discord icon is white */
-            font-size: 2rem; /* Larger icon for better visibility */
+            color: white;
+            font-size: 2rem;
         }
         .footer-bottom {
             text-align: center;
@@ -154,39 +177,51 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        .cursor {
+        #back-to-top {
+            display: none;
             position: fixed;
-            width: 20px;
-            height: 20px;
-            border: 2px solid white;
+            bottom: 20px;
+            right: 20px;
+            background-color: #333;
+            color: white;
+            border: none;
             border-radius: 50%;
-            pointer-events: none;
-            transform: translate(-50%, -50%);
-            transition: transform 0.1s ease, width 0.2s ease, height 0.2s ease;
-            z-index: 1000;
-        }
-        .cursor.hover {
             width: 40px;
             height: 40px;
-            background: rgba(255, 255, 255, 0.2);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
         }
-
-        /* Media Queries for Responsiveness */
+        #back-to-top:hover {
+            background-color: #555;
+        }
+        .social-links {
+            margin-top: 20px;
+        }
+        .social-links a {
+            color: white;
+            margin: 0 10px;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        .social-links a:hover {
+            color: #ccc;
+        }
         @media (min-width: 768px) {
             .text {
-                font-size: 6rem; /* Larger font size for tablets and desktops */
+                font-size: 6rem;
             }
             .small-text {
-                font-size: 2rem; /* Larger font size for tablets and desktops */
+                font-size: 2rem;
             }
             .overlay-text {
-                font-size: 3rem; /* Larger font size for tablets and desktops */
+                font-size: 3rem;
             }
             .image-text-section {
-                flex-direction: row; /* Side-by-side layout for larger screens */
+                flex-direction: row;
             }
             .footer {
-                flex-direction: row; /* Side-by-side footer sections for larger screens */
+                flex-direction: row;
                 justify-content: space-between;
                 width: 60%;
             }
@@ -214,7 +249,7 @@
                 <div class="text">Fine Shyts</div>
                 <div class="small-text">Wanna be my fine shyt?</div>
             </div>
-            <img class="image" src="https://media.discordapp.net/attachments/1341426971372028014/1341429454219640913/8cf40abd776e8293e45a43a64f698803.jpg?ex=67b5f708&is=67b4a588&hm=886b5cf803dab23901b095afdc6398a4216ec98843f46fbbfefd44890dc80c9d&" alt="Scrolling Image">
+            <img class="image" src="https://media.discordapp.net/attachments/1341426971372028014/1341429454219640913/8cf40abd776e8293e45a43a64f698803.jpg?ex=67b5f708&is=67b4a588&hm=886b5cf803dab23901b095afdc6398a4216ec98843f46fbbfefd44890dc80c9d&" alt="Scrolling Image" loading="lazy">
         </div>
     </div>
 
@@ -232,11 +267,17 @@
                 <p>otis@otis.team</p>
             </div>
         </footer>
+        <div class="social-links">
+            <a href="https://instagram.com/seo.udi" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
         <p class="footer-bottom">Otis © 2025. All rights reserved.</p>
     </div>
 
-    <!-- Custom Cursor -->
-    <div class="cursor"></div>
+    <!-- Back to Top Button -->
+    <button id="back-to-top" title="Go to top">↑</button>
+
+    <!-- Dark/Light Mode Toggle -->
+    <button id="theme-toggle" style="position: fixed; top: 20px; right: 20px; background: #333; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer;">🌓</button>
 
     <!-- GSAP and ScrollTrigger -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -312,23 +353,28 @@
             ease: "power3.out",
         });
 
-        // Custom cursor
-        const cursor = document.createElement("div");
-        cursor.classList.add("cursor");
-        document.body.appendChild(cursor);
+        // Back to Top Button
+        const backToTopButton = document.getElementById("back-to-top");
 
-        document.addEventListener("mousemove", (e) => {
-            cursor.style.left = e.pageX + "px";
-            cursor.style.top = e.pageY + "px";
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 300) {
+                backToTopButton.style.display = "block";
+            } else {
+                backToTopButton.style.display = "none";
+            }
         });
 
-        document.querySelectorAll("a, button, .image").forEach((element) => {
-            element.addEventListener("mouseenter", () => {
-                cursor.classList.add("hover");
-            });
-            element.addEventListener("mouseleave", () => {
-                cursor.classList.remove("hover");
-            });
+        backToTopButton.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
+        // Dark/Light Mode Toggle
+        const themeToggle = document.getElementById("theme-toggle");
+
+        themeToggle.addEventListener("click", () => {
+            document.body.classList.toggle("light-mode");
+            const isLightMode = document.body.classList.contains("light-mode");
+            themeToggle.textContent = isLightMode ? "🌙" : "🌓";
         });
     </script>
 </body>
