@@ -65,7 +65,8 @@
             align-items: center;
             gap: 30px;
             flex-direction: column;
-            animation: float 4s ease-in-out infinite; /* More noticeable floating animation */
+            animation: float 4s ease-in-out infinite;
+            margin-bottom: 50px; /* Space between sections */
         }
         .text-container {
             text-align: center;
@@ -89,7 +90,7 @@
             height: auto;
             border-radius: 15px;
             animation: fadeInUp 1.5s ease-out forwards;
-            object-fit: cover; /* Ensure images maintain aspect ratio */
+            object-fit: cover;
         }
         .overlay-text {
             position: absolute;
@@ -104,7 +105,7 @@
             background-color: #111;
             width: 100%;
             padding: 20px 0;
-            padding-bottom: 80px; /* Add extra space at the bottom */
+            padding-bottom: 80px;
         }
         .footer {
             display: flex;
@@ -154,10 +155,10 @@
         }
         @keyframes float {
             0%, 100% {
-                transform: translateY(0); /* Start and end at the same position */
+                transform: translateY(0);
             }
             50% {
-                transform: translateY(-20px); /* Move up more noticeably */
+                transform: translateY(-20px);
             }
         }
         .text, .small-text {
@@ -218,20 +219,18 @@
         .social-links a:hover {
             color: #ccc;
         }
-        /* Light mode styles for social icons */
         body.light-mode .social-links a {
-            color: black; /* Change to black in light mode */
+            color: black;
         }
         body.light-mode .social-links a:hover {
-            color: #555; /* Change hover color in light mode */
+            color: #555;
         }
         body.light-mode .discord-button i {
-            color: black; /* Change Discord icon color in light mode */
+            color: black;
         }
         body.light-mode .discord-button:hover i {
-            color: #555; /* Change Discord icon hover color in light mode */
+            color: #555;
         }
-        /* Ensure the theme toggle button is always on top */
         #theme-toggle {
             position: fixed;
             top: 20px;
@@ -242,10 +241,9 @@
             padding: 10px;
             border-radius: 5px;
             cursor: pointer;
-            z-index: 1000; /* Ensure it's above other elements */
+            z-index: 1000;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
-        /* Light mode styles for the theme toggle button */
         body.light-mode #theme-toggle {
             background: #f1f1f1;
             color: black;
@@ -262,11 +260,26 @@
             }
             .image-text-section {
                 flex-direction: row;
+                gap: 50px;
             }
             .footer {
                 flex-direction: row;
                 justify-content: space-between;
                 width: 60%;
+            }
+            /* Reverse order for the "Gays" section */
+            .image-text-section.reverse {
+                flex-direction: row;
+            }
+        }
+        /* Fix for mobile layout */
+        @media (max-width: 767px) {
+            .image-text-section.reverse {
+                flex-direction: column-reverse; /* Stack vertically with image on top */
+                gap: 20px; /* Add some spacing between image and text */
+            }
+            .image-text-section.reverse .text-container {
+                text-align: center; /* Center-align text */
             }
         }
     </style>
@@ -287,12 +300,22 @@
 
     <!-- Content Section -->
     <div class="content">
+        <!-- Fine Shyts Section -->
         <div class="image-text-section">
             <div class="text-container">
                 <div class="text">Fine Shyts</div>
                 <div class="small-text">Wanna be my fine shyt?</div>
             </div>
             <img class="image" src="https://i.imgur.com/gTtbqPi.jpeg" alt="Scrolling Image" loading="lazy">
+        </div>
+
+        <!-- Gays Section -->
+        <div class="image-text-section reverse">
+            <img class="image" src="https://cdn.discordapp.com/attachments/1280480476175400961/1342302543119777822/image.png?ex=67b92429&is=67b7d2a9&hm=c3b0ec2db9fbcc048dc3a46e12ba57e66369c656c1eb41026bf534f7f0a2bb4e&" alt="Gays Image" loading="lazy">
+            <div class="text-container">
+                <div class="text">Gays</div>
+                <div class="small-text">Are you gay?</div>
+            </div>
         </div>
     </div>
 
